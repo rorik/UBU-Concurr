@@ -7,7 +7,7 @@ public class Main {
         Thread t1 = new Thread('x', sleepMillis, iterations);
         Thread t2 = new Thread('o', sleepMillis, iterations);
         Thread t3 = new Thread('-', sleepMillis, iterations);
-        
+
         t1.start();
         t2.start();
         t3.start();
@@ -20,7 +20,5 @@ public class Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        //Thread.yield();
     }
 }

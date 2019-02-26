@@ -29,7 +29,5 @@ public class Main {
             executor.awaitTermination(5, TimeUnit.SECONDS);
             System.out.println("Finished " + executor.getClass().getName());
         }
-
-        //Thread.yield();
     }
 }
