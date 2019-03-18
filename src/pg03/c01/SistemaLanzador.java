@@ -9,7 +9,8 @@ public class SistemaLanzador {
 		final IParque parque = new Parque();
 		ExecutorService executor = Executors.newCachedThreadPool();
 		for (String nombre: new String[] {"A","B"}) {
-			executor.submit(new ActividadEntradaPuerta(nombre, parque));
+			executor.execute(new ActividadEntradaPuerta(nombre, parque));
 		}
 	}
 }
+

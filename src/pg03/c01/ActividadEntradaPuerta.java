@@ -21,7 +21,6 @@ public class ActividadEntradaPuerta implements Runnable{
 			parque.entrarAlParque(idPuerta);
 		}
 		Logger.getGlobal().log(Level.INFO,"Finalizada entrada por la puerta " + idPuerta);
-		return;
 	}
 
 }

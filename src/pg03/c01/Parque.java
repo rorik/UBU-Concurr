@@ -23,7 +23,7 @@ public class Parque implements IParque{
 	}
 	
 	@Override
-	public synchronized void entrarAlParque(String puerta) {
+	public void entrarAlParque(String puerta) {
 		contadorPersonasTotales++;
 		
 		try {
@@ -42,7 +42,7 @@ public class Parque implements IParque{
 		tmedio = (tmedio + (tActual - tinicial))/2.0;
 		
 		imprimirInfo(puerta);
-		
+
 		checkInvariante();
 	}
 
@@ -53,6 +53,6 @@ public class Parque implements IParque{
 	}
 	
 	private void checkInvariante() {
-		assert contadoresPersonasPuerta.values().stream().mapToInt(Integer::intValue).sum() == contadorPersonasTotales;
+		assert contadoresPersonasPuerta.values().stream().mapToInt(Integer::intValue).sum() == contadorPersonasTotales : "Invariante incorrecta";
 	}
 }

@@ -13,7 +13,7 @@ public class SistemaLanzador {
 		final IParque parque = new Parque();
 		ExecutorService executor = Executors.newCachedThreadPool();
 		for (int i = 0; i < N; i++) {
-			executor.submit(new ActividadEntradaPuerta(Character.toString((char) ('A' + i)), parque));
+			executor.execute(new ActividadEntradaPuerta(Character.toString((char) ('A' + i)), parque));
 		}
 	}
 }
