@@ -9,6 +9,10 @@ public class ActividadEntradaPuerta implements Runnable{
 	private String idPuerta;
 	private IParque parque;
 	
+	public ActividadEntradaPuerta(String nombre, IParque contador) {
+		this.idPuerta = nombre;
+		this.parque = contador;
+	}
 	
 	@Override
 	public void run() {

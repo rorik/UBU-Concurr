@@ -1,6 +1,5 @@
-spackage pg03.c01;
+package pg03.c01;
 
-import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -51,13 +50,12 @@ public class Parque implements IParque{
 
 	private void imprimirInfo(String idPuerta) {
 		System.out.println("Entrada al parque por puerta " + idPuerta);
-		System.out.println("--> Personas en el parque: " + contadorPersonasTotales + " tiempo medio de estancia: " + obtenerTmedio());
+		System.out.println("--> Personas en el parque: " + contadorPersonasTotales + " tiempo medio de estancia: " + tmedio/1000);
 		
-		Enumeration<String> puertas = contadoresPersonasPuerta.keys();
-		String puerta;
-		while (puertas.hasMoreElements()) {
-			
-		}
+		contadoresPersonasPuerta.forEach((puerta, entradas) -> System.out.println("----> Por puerta " + puerta + " " + entradas));
 	}
 	
+	private void checkInvariante() {
+		assert contadoresPersonasPuerta.values().stream().reduce((a,b) -> a+b).orElse(0) == contadorPersonasTotales;
+	}
 }
