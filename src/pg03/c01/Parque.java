@@ -32,14 +32,12 @@ public class Parque implements IParque{
 			Logger.getGlobal().log(Level.INFO,"Interrupcion del hilo que utiliza el objeto parque.");
 			return;
 		}
-		
-		if (contadoresPersonasPuerta.get(puerta) == null) {
-			contadoresPersonasPuerta.put(puerta,0);
-		}
+
+		contadoresPersonasPuerta.putIfAbsent(puerta, 0);
 		Integer contPu = contadoresPersonasPuerta.get(puerta);
 		contPu++;
 		contadoresPersonasPuerta.put(puerta, contPu);
-		
+
 		long tActual = System.currentTimeMillis();
 		tmedio = (tmedio + (tActual - tinicial))/2.0;
 		
@@ -51,11 +49,10 @@ public class Parque implements IParque{
 	private void imprimirInfo(String idPuerta) {
 		System.out.println("Entrada al parque por puerta " + idPuerta);
 		System.out.println("--> Personas en el parque: " + contadorPersonasTotales + " tiempo medio de estancia: " + tmedio/1000);
-		
 		contadoresPersonasPuerta.forEach((puerta, entradas) -> System.out.println("----> Por puerta " + puerta + " " + entradas));
 	}
 	
 	private void checkInvariante() {
-		assert contadoresPersonasPuerta.values().stream().reduce((a,b) -> a+b).orElse(0) == contadorPersonasTotales;
+		assert contadoresPersonasPuerta.values().stream().mapToInt(Integer::intValue).sum() == contadorPersonasTotales;
 	}
 }
