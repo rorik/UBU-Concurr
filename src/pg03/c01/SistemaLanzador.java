@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 public class SistemaLanzador {
 	
-	public static void main (String args[]) {
+	public static void main(String[] args) {
 		final IParque parque = new Parque();
 		ExecutorService executor = Executors.newCachedThreadPool();
 		for (String nombre: new String[] {"A","B"}) {
