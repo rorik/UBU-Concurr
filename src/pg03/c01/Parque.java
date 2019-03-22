@@ -23,7 +23,7 @@ public class Parque implements IParque{
 	}
 	
 	@Override
-	public void entrarAlParque(String puerta) {
+	public synchronized void entrarAlParque(String puerta) {
 		contadorPersonasTotales++;
 		
 		try {
